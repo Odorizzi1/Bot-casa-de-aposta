@@ -2,10 +2,6 @@ import asyncio
 from telegram import Bot
 from mensagem import mensagens
 
-
-from flask import Flask
-
-app = Flask(__name__)
 # Substitua 'SEU_TOKEN_AQUI' pelo token do seu bot
 TOKEN = '5888380144:AAGiRkqcBRRntx28Od7m82g3SsFkBCRGw7c'
 
