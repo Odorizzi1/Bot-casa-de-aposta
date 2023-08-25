@@ -1,13 +1,24 @@
 import asyncio
 from telegram import Bot
 from mensagem import mensagens
+import sys
+
+# Obtendo os argumentos da linha de comando
+argumentos = sys.argv
+
+# O primeiro argumento (sys.argv[0]) é o nome do próprio script
+# Os argumentos fornecidos começam a partir do índice 1
+arg1 = 10 
+if len(argumentos) > 1:
+    arg1 = argumentos[1]
 
 # Substitua 'SEU_TOKEN_AQUI' pelo token do seu bot
 TOKEN = '5888380144:AAGiRkqcBRRntx28Od7m82g3SsFkBCRGw7c'
 
 # Substitua 'ID_DO_CHAT_AQUI' pelo ID de chat do usuário ou grupo que receberá as mensagens
 chat_id = '-1001938444650'
-time = 1000 * 60 * 10
+time = 60 * float(arg1)
+
 # Função para enviar mensagens automaticamente
 async def enviar_mensagem():
     bot = Bot(token=TOKEN)
