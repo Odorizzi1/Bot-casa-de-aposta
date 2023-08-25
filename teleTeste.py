@@ -7,7 +7,7 @@ TOKEN = '5888380144:AAGiRkqcBRRntx28Od7m82g3SsFkBCRGw7c'
 
 # Substitua 'ID_DO_CHAT_AQUI' pelo ID de chat do usuário ou grupo que receberá as mensagens
 chat_id = '-1001938444650'
-
+time = 1000 * 60 * 10
 # Função para enviar mensagens automaticamente
 async def enviar_mensagem():
     bot = Bot(token=TOKEN)
@@ -19,10 +19,10 @@ async def enviar_mensagem():
                 print('Mensagem enviada com sucesso.')
 
                 # Espere 10 segundos antes de enviar a próxima mensagem
-                await asyncio.sleep(10)
+                await asyncio.sleep(time)
         except Exception as e:
             print(f'Erro ao enviar a mensagem: {str(e)}')
-            await asyncio.sleep(10)
+            await asyncio.sleep(time)
 
 # Inicie o envio de mensagens automáticas
 if __name__ == "__main__":
