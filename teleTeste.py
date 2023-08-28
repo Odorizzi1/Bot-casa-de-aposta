@@ -7,7 +7,7 @@ import pytz
 
 TOKEN = '5888380144:AAGiRkqcBRRntx28Od7m82g3SsFkBCRGw7c'
 chat_id = '-1001938444650'
-intervalo_entre_mensagens = 60  # Em segundos
+intervalo_entre_mensagens = 400  # Em segundos
 
 bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
