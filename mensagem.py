@@ -12,8 +12,8 @@ agora_brasil = datetime.now(fuso_horario_brasil)
 horario_expiracao_brasil = agora_brasil + timedelta(minutes=3)
 horario_expiracao_str = horario_expiracao_brasil.strftime('%H:%M')
 
-url_mines = "https://greenbets.io/casino/game/1695257/?bta=45274&brand=greenbetsio"
-url_cadastro = "https://afiliados.greenbets.io/visit/?bta=45274&brand=greenbetsio"
+url_cadastro = "https://greenbets.io/casino/game/1695257/?bta=45274&brand=greenbetsio"
+url_mines = "https://afiliados.greenbets.io/visit/?bta=45274&brand=greenbetsio"
 
 mensagens = [
     f"""
@@ -23,6 +23,7 @@ mensagens = [
     🔁 Nº de tentativas: 3
 
     🔗  [Clique aqui para abrir mines]({url_mines})
+
     🔗  [Clique aqui para o link de cadastro]({url_cadastro})
 
     🟦 ⭐ 🟦 🟦 🟦
@@ -38,6 +39,7 @@ mensagens = [
     🔁 Nº de tentativas: 3
 
     🔗  [Clique aqui para abrir mines]({url_mines})
+
     🔗  [Clique aqui para o link de cadastro]({url_cadastro})
 
     ⭐ 🟦 🟦 🟦 ⭐
@@ -53,6 +55,7 @@ mensagens = [
     🔁 Nº de tentativas: 3
 
     🔗  [Clique aqui para abrir mines]({url_mines})
+
     🔗  [Clique aqui para o link de cadastro]({url_cadastro})
 
     🟦 🟦 🟦 🟦 ⭐
@@ -68,6 +71,7 @@ mensagens = [
     🔁 Nº de tentativas: 3
 
     🔗  [Clique aqui para abrir mines]({url_mines})
+
     🔗  [Clique aqui para o link de cadastro]({url_cadastro})
 
     🟦 ⭐ 🟦 🟦 🟦
@@ -83,6 +87,7 @@ mensagens = [
     🔁 Nº de tentativas: 3
 
     🔗  [Clique aqui para abrir mines]({url_mines})
+
     🔗  [Clique aqui para o link de cadastro]({url_cadastro})
 
     ⭐ 🟦 🟦 🟦 🟦
@@ -98,6 +103,7 @@ mensagens = [
     🔁 Nº de tentativas: 3
 
     🔗  [Clique aqui para abrir mines]({url_mines})
+
     🔗  [Clique aqui para o link de cadastro]({url_cadastro})
 
     ⭐ 🟦 🟦 🟦 🟦
@@ -113,6 +119,7 @@ mensagens = [
     🔁 Nº de tentativas: 3
 
     🔗  [Clique aqui para abrir mines]({url_mines})
+
     🔗  [Clique aqui para o link de cadastro]({url_cadastro})
 
     🟦 🟦 ⭐ 🟦 🟦
@@ -128,6 +135,7 @@ mensagens = [
     🔁 Nº de tentativas: 3
 
     🔗  [Clique aqui para abrir mines]({url_mines})
+    
     🔗  [Clique aqui para o link de cadastro]({url_cadastro})
 
     ⭐ 🟦 🟦 🟦 🟦
