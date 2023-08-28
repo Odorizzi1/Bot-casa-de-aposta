@@ -8,7 +8,7 @@ argumentos = sys.argv
 
 # O primeiro argumento (sys.argv[0]) é o nome do próprio script
 # Os argumentos fornecidos começam a partir do índice 1
-arg1 = 10 
+arg1 = 0.01 
 if len(argumentos) > 1:
     arg1 = argumentos[1]
 
