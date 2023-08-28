@@ -1,39 +1,51 @@
 import asyncio
-from telegram import Bot
+from aiogram import Bot, Dispatcher, types
+from aiogram.types import ParseMode
 from mensagem import obter_mensagens
 from datetime import datetime, timedelta
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 import pytz
-import time
 
 TOKEN = '5888380144:AAGiRkqcBRRntx28Od7m82g3SsFkBCRGw7c'
-
-# Substitua 'ID_DO_CHAT_AQUI' pelo ID de chat do usuário ou grupo que receberá as mensagens
 chat_id = '-1001938444650'
-intervalo_entre_mensagens = 360  # Altere para o valor desejado
+intervalo_entre_mensagens = 60  # Em segundos
+
+bot = Bot(token=TOKEN)
+dp = Dispatcher(bot)
+
+async def on_startup(dp):
+    await enviar_mensagens()
 
 async def enviar_mensagens():
-    bot = Bot(token=TOKEN)
-
-    while True:  # Um loop infinito para enviar mensagens continuamente
+    while True:
         try:
+            # Obtém o fuso horário brasileiro
             fuso_horario_brasil = pytz.timezone('America/Sao_Paulo')
-            agora_brasil = datetime.now(fuso_horario_brasil)
 
-            # Calcula o horário de expiração (3 minutos a partir da hora atual)
+            # Obtém o horário atual com fuso horário brasileiro
+            agora_brasil = datetime.now(fuso_horario_brasil)
+            print(agora_brasil, "--")
+
+            # Calcula o horário de expiração, 3 minutos após o horário atual
             horario_expiracao_brasil = agora_brasil + timedelta(minutes=3)
             horario_expiracao_str = horario_expiracao_brasil.strftime('%H:%M')
-            print(horario_expiracao_str)  # Adicione esta linha
+            print(f"Hora de Expiração: {horario_expiracao_str}")
 
-            mensagens = obter_mensagens()  # Chame a função sem passar horario_expiracao_str como argumento
+            # Obtém uma mensagem usando o horário de expiração
+            mensagens = obter_mensagens(horario_expiracao_str)
 
-            for mensagem_original in mensagens:
-                mensagem_atualizada = mensagem_original.format(horario_expiracao_str=horario_expiracao_str)
-                await bot.send_message(chat_id, mensagem_atualizada, parse_mode='MarkdownV2', disable_web_page_preview=True)
+            # Se houver mensagens, pegue a primeira e envie
+            if mensagens:
+                mensagem_atualizada = mensagens[0].format(horario_expiracao_str=horario_expiracao_str)
+                await bot.send_message(chat_id, mensagem_atualizada, parse_mode=ParseMode.MARKDOWN_V2, disable_web_page_preview=True)
                 print('Mensagem enviada com sucesso.')
-                await asyncio.sleep(intervalo_entre_mensagens)  # Aguarda o intervalo antes de enviar a próxima mensagem
+
+                # Aguarda um intervalo antes da próxima mensagem
+                await asyncio.sleep(intervalo_entre_mensagens)
+
         except Exception as e:
             print(f'Erro ao enviar a mensagem: {str(e)}')
+            await asyncio.sleep(10)  # Em caso de erro, aguarde 10 segundos antes de tentar novamente
 
 if __name__ == "__main__":
-    asyncio.run(enviar_mensagens())
+    from aiogram import executor
+    executor.start_polling(dp, on_startup=on_startup)
