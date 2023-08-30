@@ -13,6 +13,7 @@ bot = Bot(token=TOKEN)
 dp = Dispatcher(bot)
 
 async def send_messages():
+ while True:
     for mensagem in mensagens:
         agora = datetime.now(pytz.timezone('America/Sao_Paulo'))  # Ajustado para o fuso horário de São Paulo
         horario_expiracao = agora + timedelta(minutes=3)
@@ -26,10 +27,7 @@ async def send_messages():
 
         # Enviar a mensagem
         await bot.send_message(chat_id, mensagem_formatada, parse_mode=ParseMode.MARKDOWN_V2, disable_web_page_preview=True)
-        
-        print(horario_expiracao)
-        print(mensagem_formatada)
-        print(horario_expiracao_str)
+        print("sem parar")
 
         await asyncio.sleep(420)  # Pausa assíncrona de 10 segundos
 
